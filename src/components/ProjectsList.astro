@@ -1,0 +1,30 @@
+---
+import Card from "./Card.astro";
+import { type Project } from "../types/types";
+import { getProjects } from "../api/projects";
+
+
+const projects = await getProjects()
+const loading = false;
+---
+
+<div
+  class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4 my-2 sm:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] "
+>
+  {
+    loading ? (
+      <div
+        class="animate-spin inline-block w-10 h-10 border-[3px] border-current border-t-transparent rounded-full text-rosado"
+        role="status"
+        aria-label="loading"
+      >
+        <span class="sr-only">Loading...</span>
+      </div>
+    ) : (
+      projects?.map((project) => {
+        return <Card project={project} />
+      })
+    )
+  }
+</div>
+ )
