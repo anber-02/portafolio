@@ -7,4 +7,4 @@ export default defineConfig({
   integrations: [tailwind()],
   output: "server",
   adapter: netlify()
-});
+});0
