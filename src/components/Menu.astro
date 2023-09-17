@@ -3,77 +3,61 @@
 ---
 
 <header
-  class="max-w-4xl m-auto h-12 fixed left-0 right-0 top-0 bg-slate-900 z-50 flex justify-between items-center px-2 py-2 sm:rounded-md border-b-2 border-gray-600"
+  class="max-w-4xl m-auto fixed left-0 right-0 top-0 sm:flex sm:flex-row sm:justify-between sm:items-center px-2 py-2 backdrop-blur-3xl overflow-hidden z-50"
 >
-  <h3 class="text-white font-semibold text-lg">Ann</h3>
-  <nav
-    id="nav"
-    class="text-white absolute top-0 left-0 right-0 bg-blue-900 sm:bg-opacity-0 bg-opacity-40 hidden sm:block sm:relative"
-  >
-    <ul class="mt-12 mb-2 sm:flex sm:mb-0 sm:mt-0 items-center gap-2">
-      <li class="rounded-sm px-2 py-1 cursor-pointer hover:bg-blue-900">
-        <a href="#" class="w-full inline-block">Inicio</a>
-      </li>
-      <li class="rounded-sm px-2 py-1 cursor-pointer hover:bg-blue-900">
-        <a href="#about_me" class="w-full inline-block">Sobre mi</a>
-      </li>
-      <li class="rounded-sm px-2 py-1 cursor-pointer hover:bg-blue-900">
-        <a href="#portfolio" class="w-full inline-block">Proyectos</a>
-      </li>
-    </ul>
-    <button
-      class="sm:hidden rounded-full bg-white text-black h-8 w-8 flex items-center justify-center absolute top-2 right-2"
+  <h3 class="text-white font-semibold text-lg px-2">ANN</h3>
+  <nav id="nav" class="text-white sm:bg-opacity-0 flex gap-2">
+    <a
+      href="#inicio"
+      class="inline-block rounded-sm px-2 py-1 cursor-pointer border-b-2 border-secondary hover:bg-blue-900"
+      >Inicio</a
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 1024 1024"
-        ><path
-          fill="currentColor"
-          d="M195.2 195.2a64 64 0 0 1 90.496 0L512 421.504L738.304 195.2a64 64 0 0 1 90.496 90.496L602.496 512L828.8 738.304a64 64 0 0 1-90.496 90.496L512 602.496L285.696 828.8a64 64 0 0 1-90.496-90.496L421.504 512L195.2 285.696a64 64 0 0 1 0-90.496z"
-        ></path></svg
-      >
-    </button>
+    <a
+      href="#about_me"
+      class="inline-block rounded-sm px-2 py-1 cursor-pointer hover:bg-blue-900"
+      >Sobre mi</a
+    >
+    <a
+      href="#portfolio"
+      class="inline-block rounded-sm px-2 py-1 cursor-pointer hover:bg-blue-900"
+      >Proyectos</a
+    >
   </nav>
-  <button
-  onclick=""
-    class="sm:hidden rounded-full bg-white text-black h-8 w-8 flex items-center justify-center"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      ><g fill="none"
-        ><path
-          d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"
-        ></path><path
-          fill="currentColor"
-          d="M20 17.5a1.5 1.5 0 0 1 .144 2.993L20 20.5H4a1.5 1.5 0 0 1-.144-2.993L4 17.5h16Zm0-7a1.5 1.5 0 0 1 0 3H4a1.5 1.5 0 0 1 0-3h16Zm0-7a1.5 1.5 0 0 1 0 3H4a1.5 1.5 0 1 1 0-3h16Z"
-        ></path></g
-      ></svg
-    >
-  </button>
 </header>
 
 <script>
-  // Encuentra todos los botones con la clase `alert` en la página.
-  const buttons = document.querySelectorAll('button');
-  const nav = document.querySelector('#nav');
+  const anchors = Array.from(
+    document.querySelectorAll("#nav a")
+  ) as HTMLAnchorElement[];
 
-  const showMenu = () => {
-    nav?.classList.toggle('hidden')
-  }
-  // Maneja los clics en cada botón.
-  buttons.forEach((button) => {
-    button.addEventListener('click', showMenu);
-  });
+  const header = document.querySelector("header");
+  window.addEventListener("scroll", () => {
+    const currentScrollTop =
+      window.scrollY || document.documentElement.scrollTop;
 
-  document.addEventListener('click', function (e: any) {
-    let isClickInside = nav?.contains(e.target) || [...buttons].map(btn => btn.contains(e.target));
-    if (!isClickInside) {
-      nav?.classList.add('hidden')
+    header?.classList.add("border-b-2", "border-gray-600");
+    if (currentScrollTop === 0) {
+      header?.classList.remove("border-b-2", "border-gray-600");
     }
-});
+
+    // Obtén la posición de desplazamiento vertical
+    const scrollY = window.scrollY;
+    // Recorre los enlaces y determina cuál está activo
+    anchors.forEach((a) => {
+      const targetId = a.hash.substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const targetOffset = targetElement.offsetTop;
+        const targetHeight = targetElement.offsetHeight;
+
+        if (scrollY >= targetOffset && scrollY < targetOffset + targetHeight) {
+          // El enlace está en la vista
+          a.classList.add("border-b-2", "border-secondary");
+        } else {
+          // El enlace no está en la vista
+          a.classList.remove("border-b-2", "border-secondary");
+        }
+      }
+    });
+  });
 </script>

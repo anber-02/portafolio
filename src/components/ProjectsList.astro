@@ -3,13 +3,13 @@ import Card from "./Card.astro";
 import { type Project } from "../types/types";
 import { getProjects } from "../api/projects";
 
-
-const projects = await getProjects()
-const loading = false;
+let loading = true;
+const projects = await getProjects();
+loading = false;
 ---
 
 <div
-  class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4 my-2 sm:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] "
+  class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4 my-2 sm:grid-cols-[repeat(auto-fit,minmax(250px,1fr))]"
 >
   {
     loading ? (
@@ -22,9 +22,8 @@ const loading = false;
       </div>
     ) : (
       projects?.map((project) => {
-        return <Card project={project} />
+        return <Card project={project} />;
       })
     )
   }
 </div>
- )
