@@ -3,17 +3,6 @@ import {type QueryDatabaseParameters } from "@notionhq/client/build/src/api-endp
 import { Client } from "@notionhq/client";
 
 
-interface NotionPage {
-  id: string,
-  descripcion: string,
-  estado: string,
-  github: string,
-  lenguajes: string,
-  nombre: string,
-  image: string
-}
-
-
 const DATABASE_ID = "ed2299e9bb5044b3959b42c705324292"
 
 const notion = new Client({
@@ -39,7 +28,6 @@ export const getProjects = async () => {
 
   try {
     const { results } = await notion.databases.query(query)
-
     const data = results.map((page: any) => {
       const { properties, cover } = page
       const { ID, Descripcion, Estado, URL, Lenguajes, Nombre } = properties
