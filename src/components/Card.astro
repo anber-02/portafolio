@@ -7,45 +7,49 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<div class="bg-slate-800 text-white rounded-md p-4 overflow-auto h-full gap-2 grid">
-  <figure class="overflow-hidden h-[180px] w-full rounded-sm">
+<div class="flex p-2 gap-2 flex-col bg-slate-800 text-white rounded-md overflow-hidden relative h-auto group">
+  <figure class="overflow-hidden aspect-square w-full h-auto flex-none rounded-sm">
     <img
       src={project.image}
+      loading="lazy"
       alt={`image de ${project.nombre[0].text.content}`}
-      class="block h-full w-full object-cover"
+      class="block h-full w-full object-cover group-hover:scale-105"
     />
   </figure>
 
-  <div class="flex gap-2 flex-wrap">
-    {
-      project.lenguajes.map((lenguaje) => {
-        return (
-          <span
-            class="py-0.5 px-2 rounded-full text-xs  tracking-wider bg-opacity-50"
-            style={{ backgroundColor: lenguaje.color }}
-          >
-            {lenguaje.name}
-          </span>
-        );
-      })
-    }
+  <div class="flex flex-auto flex-col px-2">
+    <h4 class="text-white text-sm first-letter:uppercase">
+      {project.nombre[0].text.content}
+    </h4>
+    <div class="flex gap-1 flex-wrap py-1 text-xs text-gray-200">
+      {
+        project.lenguajes.map((lenguaje) => {
+          return (
+            <span
+              class="py-0.5 px-2 text-xs rounded-full"
+              style={{ backgroundColor: lenguaje.color }}
+            >
+              {lenguaje.name}
+            </span>
+          );
+        })
+      }
+    </div>
   </div>
 
-  <div class="flex flex-col gap-4 self-end">
-    <h2 class="font-semibold text-lg border-b-2 border-gray-600 pb-2">
-      {project.nombre[0].text.content}
-    </h2>
-    <p class="text-sm sm:min-h-[50px]">
-      {project?.descripcion[0]?.text.content}
-    </p>
-    <div class="h-6">
+  <div class="transition-all duration-300 ease-in-out absolute top-0 left-0 w-full h-full hidden group-hover:block bg-black bg-opacity-70">
+    <div class="flex flex-col gap-2 p-2 items-center justify-center h-full w-full">
+      <h3 class="text-white text-sm first-letter:uppercase">
+        {project.descripcion[0].text.content}
+      </h3>
+
       {
         project.github !== null ? (
           <a
             href={project.github || ""}
             target="_blank"
             rel="noreferrer"
-            class="flex gap-2 items-center bg-gray-600 rounded-md py-1 px-2 hover:bg-gray-700"
+            class="flex gap-2 items-center bg-gray-600 rounded-md p-1 px-2 hover:bg-gray-700"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
