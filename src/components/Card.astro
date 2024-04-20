@@ -1,4 +1,6 @@
 ---
+import Github from "../icons/Github.astro";
+import PreviewIcon from "../icons/PreviewIcon.astro";
 import type { Project } from "../types/types";
 interface Props {
   project: Project;
@@ -7,67 +9,77 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<div class="flex p-2 gap-2 flex-col bg-slate-800 text-white rounded-md overflow-hidden relative h-auto group">
-  <figure class="overflow-hidden aspect-square w-full h-auto flex-none rounded-sm">
+<div
+  class="flex flex-col md:flex-row p-2 gap-4 text-white rounded-md relative h-auto group md:space-x-6 w-full"
+>
+  <figure
+    class="relative md:w-1/2 flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50"
+  >
     <img
       src={project.image}
       loading="lazy"
-      alt={`image de ${project.nombre[0].text.content}`}
-      class="block h-full w-full object-cover group-hover:scale-105"
+      alt={`image de ${project.name}`}
+      class="object-cover object-top w-full h-56 transition duration-500 md:scale-110 md:group-hover:scale-105"
     />
   </figure>
 
-  <div class="flex flex-auto flex-col px-2">
-    <h4 class="text-white text-sm first-letter:uppercase">
-      {project.nombre[0].text.content}
-    </h4>
-    <div class="flex gap-1 flex-wrap py-1 text-xs text-gray-200">
+  <div class="w-full md:w-1/2 md:max-w-lg">
+    <h3
+      class="text-2xl font-bold text-gray-800 dark:text-gray-100 first-letter:uppercase"
+    >
+      {project.name}
+    </h3>
+    <ul class="flex flex-row my-2 gap-x-2">
       {
-        project.lenguajes.map((lenguaje) => {
+        project.languages.map((lenguaje: any) => {
           return (
-            <span
-              class="py-0.5 px-2 text-xs rounded-full"
-              style={{ backgroundColor: lenguaje.color }}
+            <li
+              class="py-1 px-2 text-xs rounded-full"
+              style={{ backgroundColor: lenguaje.color, opacity: 8 }}
             >
               {lenguaje.name}
-            </span>
+            </li>
           );
         })
       }
+    </ul>
+
+    <div class="text-xl mt-2 text-gray-700 dark:text-gray-400 first-letter:uppercase">
+      {project.description}
     </div>
-  </div>
+    <div class="flex  gap-3 flex-wrap">
 
-  <div class="transition-all duration-300 ease-in-out absolute top-0 left-0 w-full h-full hidden group-hover:block bg-black bg-opacity-70">
-    <div class="flex flex-col gap-2 p-2 items-center justify-center h-full w-full">
-      <h3 class="text-white text-sm first-letter:uppercase">
-        {project.descripcion[0].text.content}
-      </h3>
+    {
+      project.github !== null ? (
+        <a
+          href={project.github || ""}
+          target="_blank"
+          rel="noreferrer"
+          class="mt-4 inline-flex items-center justify-center gap-2 px-3 py-2 space-x-2 text-base text-white transition bg-gray-800 border border-gray-600 focus-visible:ring-yellow-500/80 text-md hover:bg-gray-800 hover:border-gray-900 group max-w-fit rounded-xl hover:text-white focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2 active:bg-black"
+        >
+          <Github class="w-6 h-6" />
+          <span>Repositorio</span>
+        </a>
+      ) : (
+        ""
+      )
+    }
 
-      {
-        project.github !== null ? (
-          <a
-            href={project.github || ""}
-            target="_blank"
-            rel="noreferrer"
-            class="flex gap-2 items-center bg-gray-600 rounded-md p-1 px-2 hover:bg-gray-700"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="currentColor"
-                d="M12.001 2c-5.525 0-10 4.475-10 10a9.994 9.994 0 0 0 6.837 9.488c.5.087.688-.213.688-.476c0-.237-.013-1.024-.013-1.862c-2.512.463-3.162-.612-3.362-1.175c-.113-.288-.6-1.175-1.025-1.413c-.35-.187-.85-.65-.013-.662c.788-.013 1.35.725 1.538 1.025c.9 1.512 2.337 1.087 2.912.825c.088-.65.35-1.087.638-1.337c-2.225-.25-4.55-1.113-4.55-4.938c0-1.088.387-1.987 1.025-2.688c-.1-.25-.45-1.275.1-2.65c0 0 .837-.262 2.75 1.026a9.28 9.28 0 0 1 2.5-.338c.85 0 1.7.112 2.5.337c1.913-1.3 2.75-1.024 2.75-1.024c.55 1.375.2 2.4.1 2.65c.637.7 1.025 1.587 1.025 2.687c0 3.838-2.337 4.688-4.563 4.938c.363.312.676.912.676 1.85c0 1.337-.013 2.412-.013 2.75c0 .262.188.574.688.474A10.016 10.016 0 0 0 22 12c0-5.525-4.475-10-10-10Z"
-              />
-            </svg>
-            <span>Repositorio</span>
-          </a>
-        ) : (
-          ""
-        )
-      }
+{
+  project.preview !== null ? (
+    <a
+      href={project.preview || ""}
+      target="_blank"
+      rel="noreferrer"
+      class="mt-4 inline-flex items-center justify-center gap-2 px-3 py-2 space-x-2 text-base text-white transition bg-gray-800 border border-gray-600 focus-visible:ring-yellow-500/80 text-md hover:bg-gray-800 hover:border-gray-900 group max-w-fit rounded-xl hover:text-white focus:outline-none focus-visible:outline-none focus-visible:ring focus-visible:ring-white focus-visible:ring-offset-2 active:bg-black"
+    >
+    <PreviewIcon />
+      <span>Preview</span>
+    </a>
+  ) : (
+    ""
+  )
+}
     </div>
   </div>
 </div>

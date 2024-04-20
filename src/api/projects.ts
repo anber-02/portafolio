@@ -1,6 +1,7 @@
 
-import {type QueryDatabaseParameters } from "@notionhq/client/build/src/api-endpoints";
+import { type QueryDatabaseParameters, type QueryDatabaseResponse } from "@notionhq/client/build/src/api-endpoints";
 import { Client } from "@notionhq/client";
+import type { Page, Project } from "../types/types";
 
 
 const DATABASE_ID = "ed2299e9bb5044b3959b42c705324292"
@@ -14,8 +15,8 @@ export const getProjects = async () => {
     database_id: DATABASE_ID,
     filter: {
       property: 'Estado',
-      multi_select: {
-        contains: 'Done'
+      select: {
+        equals: 'Done'
       }
     },
     sorts: [
@@ -27,20 +28,20 @@ export const getProjects = async () => {
   }
 
   try {
-    const { results } = await notion.databases.query(query)
-    const data = results.map((page: any) => {
-      const { properties, cover } = page
-      const { ID, Descripcion, Estado, URL, Lenguajes, Nombre } = properties
+    const { results }: QueryDatabaseResponse = await notion.databases.query(query)
+    const projects: Page[] = results as Page[]
+
+    const data: Project[] = projects.map((result) => {
+      const { properties, cover } = result
+      const { Descripcion, Lenguajes, Nombre, Github, Preview } = properties
 
       return {
-        id: ID[ID.type],
-        descripcion: Descripcion[Descripcion.type],
-        estado: Estado[Estado.type],
-        github: URL[URL.type],
-        lenguajes: Lenguajes[Lenguajes.type],
-        nombre: Nombre[Nombre.type],
-        image: page?.cover?.file?.url
-
+        description: Descripcion.rich_text.map(e => (e.text.content))[0],
+        languages: Lenguajes.multi_select,
+        name: Nombre.title.map(e => (e.text.content))[0],
+        image: cover.file.url,
+        github: Github.url,
+        preview: Preview.url
       }
     })
     return data

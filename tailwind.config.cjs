@@ -12,9 +12,6 @@ module.exports = {
         rosado: '#FF006E',
         azul: '#3A86FF'
       },
-      fontFamily: {
-        poppins: 'Poppins, sans-serif'
-      },
       fontSize: {
         '5xl': ['3.2rem', '3.75rem']
       }

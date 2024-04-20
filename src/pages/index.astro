@@ -1,77 +1,59 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-
-import ProjectsList from "../components/ProjectsList.astro";
+import LinkedIn from "../icons/LinkedIn.astro";
+import SocialIcon from "../components/SocialIcon.astro";
+import GitHub from "../icons/Github.astro";
+import Contact from "../icons/Contact.astro";
+import Projects from "../components/Projects.astro";
+import SectionContainer from "../components/SectionContainer.astro";
+import AboutMe from "../components/AboutMe.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="Portafolio Anberto">
-  <main class="px-8 sm:px-0">
-    <Header />
+<Layout title="Portafolio Anberto - Programador ">
+  <main class="flex flex-col md:w-[1120px] w-full mx-auto relative h-full ">
+    <SectionContainer id="inicio" class="py-36 pb-32 flex flex-col">
+      <h1
+        class="text-white text-5xl font-bold pb-6 flex items-center space-x-8"
+      >
+        Hola, soy Anberto
+      </h1>
+      <h2
+        class="text-xl lg:text-2xl text-balance max-w-[700px] text-black dark:text-white"
+      >
+        Ingeniero en Tecnologías de la Información. Desarrollador FullStack
+        <br />
+      </h2>
 
-    <section
-      id="about_me"
-      class="py-16 sm:min-h-0 sm:py-12 border-t-2 border-gray-600"
-    >
-      <h2 class="text-2xl font-bold text-secondary sm:text-4xl">Sobre Mi</h2>
-      <p class="font-normal text-gray-200 text-sm sm:text-lg">
-        Estudiante en TI, desarrollando proyectos personales, practicando y
-        mejorando mis conocimientos en el mundo del desarrollo.
-      </p>
+      <nav class="flex gap-3 mt-8 flex-wrap">
+        <SocialIcon href="https://www.linkedin.com/in/luisanberto/">
+          <LinkedIn class="w-6 h-6" />
+          LinkedIn
+        </SocialIcon>
+        <SocialIcon href="https://github.com/anber-02">
+          <GitHub class="w-6 h-6" />
+          GitHub
+        </SocialIcon>
+        <SocialIcon href="mailto:anberdev@gmail.com">
+          <Contact />
+          Contacto
+        </SocialIcon>
+      </nav>
+    </SectionContainer>
+    <div class="space-y-24">
+      <SectionContainer id="proyectos" class="pt-28">
+        <Projects />
+      </SectionContainer>
 
-      <div class="flex flex-col gap-4">
-        <div class="mt-4">
-          <h3 class="text-morado font-semibold text-xl">Experiencia</h3>
-          <ul class="text-white pl-6">
-            <li class="list-disc">
-              <p class="text-white text-sm font-semibold sm:text-lg">
-                Empresa <small class="block text-gray-300 text-xs"
-                  >(2021-2024)</small
-                >
-              </p>
-              <div class="pl-2 description">
-                <span class="text-gray-300 text-base"
-                  >Aquí va la descripción</span
-                >
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-morado font-semibold text-xl">Educación</h3>
-          <ul class="text-white pl-6">
-            <li class="list-disc">
-              <p class="text-white text-sm font-semibold sm:text-lg">
-                Tecnologías de la información
-              </p>
-              <small class="block text-gray-300 text-xs font-semibold">(2021-2024)</small>
-              <p class="text-gray-300 text-base">
-                Universidad Tecnológica de los valles centrales de Oaxaca (
-                UTVCO )
-              </p>
-            </li>
-          </ul>
-        </div>
-        <div class="mt-4">
-          <h3 class="text-morado font-semibold text-xl">Lenguajes</h3>
-          <ul class="text-white pl-6 list-disc">
-            <li class="sm:text-lg">
-              <p class="text-white text-sm font-semibold">Español</p>
-            </li>
-            <li class="sm:text-lg">
-              <p class="text-white text-sm font-semibold">Ingles - A1</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="portfolio" class="py-16 sm:py-12 border-t-2 border-gray-600">
-      <h2 class="text-2xl sm:text-4xl font-bold text-gray-200">Proyectos</h2>
-      <p class="block font-semibold text-gray-400 py-2">Trabajos recientes</p>
-      <div class="">
-        <ProjectsList />
-      </div>
-    </section>
+      <SectionContainer id="sobre-mi" class="pt-10">
+        <h2
+          class="mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+        >
+          Sobre Mi
+        </h2>
+        <AboutMe />
+      </SectionContainer>
+      <Footer />
+    </div>
   </main>
 </Layout>
