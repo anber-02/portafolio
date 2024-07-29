@@ -36,7 +36,7 @@ export const getProjects = async () => {
       const { Descripcion, Lenguajes, Nombre, Github, Preview } = properties
 
       return {
-        description: Descripcion.rich_text.map(e => (e.text.content))[0],
+        description: Descripcion ? Descripcion.rich_text.map(e => e.text.content).join('') : '',
         languages: Lenguajes.multi_select,
         name: Nombre.title.map(e => (e.text.content))[0],
         image: cover.file.url,
