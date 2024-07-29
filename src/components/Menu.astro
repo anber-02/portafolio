@@ -12,20 +12,21 @@ const navItems = [
   },
 ];
 ---
-
-<ul class="flex my-auto  gap-4 text-base font-medium">
-  {
-    navItems.map((link) => (
-      <a
-        class="transition hover:text-purple-500 dark:hover:text-purple-400"
-        aria-label={link.label}
-        href={link.url}
-      >
-        {link.title}
-      </a>
-    ))
-  }
-</ul>
+<nav class="flex px-4 py-2 text-sm font-medium rounded-full justify-center items-center">
+  <ul class="flex my-auto  gap-4 text-base font-medium">
+    {
+      navItems.map((link) => (
+        <a
+          class="transition text-white hover:text-rojo active:text-rojo"
+          aria-label={link.label}
+          href={link.url}
+        >
+          {link.title}
+        </a>
+      ))
+    }
+  </ul>
+</nav>
 <script>
   // document.addEventListener("astro:page-load", () => {
   const sections = document.querySelectorAll("section");
@@ -36,13 +37,13 @@ const navItems = [
       if (entry.isIntersecting) {
         /**
          * Para cada elemento del menú de navegación, se compara su atributo aria-label con el id del
-         * elemento <section> que está intersectando. Si coinciden, se añade la clase CSS "text-purple-500"
+         * elemento <section> que está interceptando. Si coinciden, se añade la clase CSS "text-purple-500"
          */
         navItems.forEach((item) => {
           if (item.getAttribute("aria-label") == entry.target.id) {
-            item.classList.add("text-purple-500");
+            item.classList.add("text-rojo");
           } else {
-            item.classList.remove("text-purple-500");
+            item.classList.remove("text-rojo");
           }
         });
       }
@@ -50,7 +51,7 @@ const navItems = [
   };
 
   const observer = new IntersectionObserver(callback, {
-    root: null, //ndica que el contenedor raíz utilizado para calcular la intersección es el viewport (la ventana del navegador)
+    root: null, //indica que el contenedor raíz utilizado para calcular la intersección es el viewport (la ventana del navegador)
     rootMargin: "20px",
     threshold: 0.3, //indica que la función de devolución de llamada se ejecutará cuando el 40% del elemento sea visible en el viewport.
   });
@@ -72,4 +73,16 @@ const navItems = [
   // })
 </script>
 
-<style></style>
+<style>
+   nav {
+    animation: nav-shadown 1s linear both;
+    animation-timeline: scroll();
+    animation-range: 0 100px;
+  }
+
+  @keyframes nav-shadown {
+    to {
+      @apply shadow-lg ring-1 backdrop-blur  bg-slate-600/50 ring-white/10;
+    }
+  }
+</style>

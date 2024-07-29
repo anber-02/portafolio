@@ -1,0 +1,18 @@
+---
+const { languages } = Astro.props;
+---
+
+<ul class="flex flex-row my-2 gap-x-2">
+  {
+    languages.map((lenguaje: any) => {
+      return (
+        <li
+          class="py-1 px-2 text-xs rounded-full"
+          style={{ backgroundColor: lenguaje.color, opacity: 8 }}
+        >
+          {lenguaje.name}
+        </li>
+      );
+    })
+  }
+</ul>

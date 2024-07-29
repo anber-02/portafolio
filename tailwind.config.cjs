@@ -6,11 +6,11 @@ module.exports = {
       colors: {
         primary: '#02CECB',
         secondary: 'rgb(253, 224, 71)',
-        morado: '#8338EC',
+        "text": '#fefefe',
+        "textSecondary": '#8d99ae',
+        rojo: '#e70e02',
+        rojoSuave: '#f44e3f',
         verde: '#06837F',
-        verdeClaro: '#B4FFFF',
-        rosado: '#FF006E',
-        azul: '#3A86FF'
       },
       fontSize: {
         '5xl': ['3.2rem', '3.75rem']

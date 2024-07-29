@@ -1,22 +1,5 @@
 ---
-import { Image } from "astro:assets"
-import image from '../../public/about_me.webp'
 ---
 <div class="flex flex-col md:flex-row md:justify-between items-center gap-6">
-  <p class="w-full md:w-2/3 text-xl ">Me llamo Luis Anberto. Empece en la programación desarrollando sistemas pequeños en c++ después de un tiempo me pase al desarrollo web que es el area que mas me ha gustado en la programación asi como también la ciberseguridad.<br><br> Actualmente tomando cursos sobre ciberseguridad para reforzar conocimientos y poder ejercer en el area <br /> </p>
-
-  <figure class="w-2/3   md:w-1/4 h-auto rounded-md overflow-hidden border-2 border-gray-700 md:rotate-1 bg-center">
-    <Image
-      src={image}
-      id={'about-me-image'}
-      alt="avatar-profile"
-      class={"h-full w-full object-top object-cover md:scale-125"}
-    />
-  </figure>
+  <p class="w-full md:w-3/4">Me llamo Luis Anberto. Empece en la programación desarrollando sistemas pequeños en c++ después de un tiempo me pase al desarrollo web que es el area que mas me ha gustado en la programación asi como también la ciberseguridad.<br><br> Actualmente tomando cursos sobre ciberseguridad para reforzar conocimientos y poder ejercer en el area <br /> </p>
 </div>
-
-<style>
-#about-me-image{
-  mask-image: linear-gradient(black 50%, transparent);
-}
-</style>

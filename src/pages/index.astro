@@ -1,51 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import LinkedIn from "../icons/LinkedIn.astro";
-import SocialIcon from "../components/SocialIcon.astro";
-import GitHub from "../icons/Github.astro";
-import Contact from "../icons/Contact.astro";
 import Projects from "../components/Projects.astro";
 import SectionContainer from "../components/SectionContainer.astro";
 import AboutMe from "../components/AboutMe.astro";
-import Footer from "../components/Footer.astro";
+import Home from "../components/Home.astro";
 ---
 
 <Layout title="Portafolio Anberto - Programador ">
-  <main class="flex flex-col md:w-[1120px] w-full mx-auto relative h-full ">
-    <SectionContainer id="inicio" class="py-36 pb-32 flex flex-col">
-      <h1
-        class="text-white text-5xl font-bold pb-6 flex items-center space-x-8"
-      >
-        Hola, soy Anberto
-      </h1>
-      <h2
-        class="text-xl lg:text-2xl text-balance max-w-[700px] text-black dark:text-white"
-      >
-        Ingeniero en Tecnologías de la Información. Desarrollador FullStack
-        <br />
-      </h2>
-
-      <nav class="flex gap-3 mt-8 flex-wrap">
-        <SocialIcon href="https://www.linkedin.com/in/luisanberto/">
-          <LinkedIn class="w-6 h-6" />
-          LinkedIn
-        </SocialIcon>
-        <SocialIcon href="https://github.com/anber-02">
-          <GitHub class="w-6 h-6" />
-          GitHub
-        </SocialIcon>
-        <SocialIcon href="mailto:anberdev@gmail.com">
-          <Contact />
-          Contacto
-        </SocialIcon>
-      </nav>
+  <main class="py-16 md:py-36">
+    <SectionContainer id="inicio" class="pb-16 md:pb-36">
+      <Home />
     </SectionContainer>
+    
     <div class="space-y-24">
-      <SectionContainer id="proyectos" class="pt-28">
+      <SectionContainer id="proyectos">
         <Projects />
       </SectionContainer>
 
-      <SectionContainer id="sobre-mi" class="pt-10">
+      <SectionContainer id="sobre-mi">
         <h2
           class="mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
         >
@@ -53,7 +25,6 @@ import Footer from "../components/Footer.astro";
         </h2>
         <AboutMe />
       </SectionContainer>
-      <Footer />
     </div>
   </main>
 </Layout>

@@ -1,0 +1,50 @@
+---
+import Github from "../icons/Github.astro";
+import PreviewIcon from "../icons/PreviewIcon.astro";
+import type { Project } from "../types/types";
+import ButtonCard from "./ButtonCard.astro";
+import Chips from "./Chips.astro";
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<div
+  class="flex flex-col md:flex-row p-2 gap-4 text-white rounded-md relative h-auto group md:space-x-6 w-full"
+>
+  <figure
+    class="relative md:w-1/2 flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50"
+  >
+    <img
+      src={project.image}
+      loading="lazy"
+      alt={`image de ${project.name}`}
+      class="object-cover object-top w-full h-56 transition duration-500 md:scale-110 md:group-hover:scale-105"
+    />
+  </figure>
+
+  <div class="w-full md:w-1/2 md:max-w-lg flex flex-col justify-between">
+    <div>
+      <h3
+        class="text-2xl font-bold text-gray-800 dark:text-gray-100 first-letter:uppercase"
+      >
+        {project.name}
+      </h3>
+      <Chips languages={project.languages} />
+    </div>
+
+    <div class="mt-2 text-gray-700 dark:text-gray-400 first-letter:uppercase">
+      {project.description}
+    </div>
+    <div class="flex gap-3 flex-wrap">
+      <ButtonCard link={project.github} text="Repositorio">
+        <Github class="w-6 h-6"  />
+      </ButtonCard>
+      <ButtonCard link={project.preview} text="Preview">
+        <PreviewIcon class="w-6 h-6"  />
+      </ButtonCard>
+    </div>
+  </div>
+</div>
