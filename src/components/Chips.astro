@@ -1,18 +1,37 @@
 ---
-const { languages } = Astro.props;
+interface Props {
+  languages: { name: LanguageName }[];
+}
+
+const { languages }: Props = Astro.props;
+import { TAGS } from "../data/data";
+type LanguageName = keyof typeof TAGS;
 ---
 
-<ul class="flex flex-row my-2 gap-x-2">
+<ul class="flex flex-row mb-2 gap-x-2">
   {
     languages.map((lenguaje: any) => {
-      return (
-        <li
-          class="py-1 px-2 text-xs rounded-full"
-          style={{ backgroundColor: lenguaje.color, opacity: 8 }}
-        >
-          {lenguaje.name}
-        </li>
-      );
+      const name: string = lenguaje.name.toUpperCase();
+      const tag = TAGS[name];
+
+      if (tag) {
+        return (
+          <li>
+            <span
+              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 items-center`}
+            >
+              <tag.icon class="w-4 h-4"/>
+              {tag.name}
+            </span>
+          </li>
+        );
+      } else {
+        return (
+          <li class="py-1 px-2 text-xs rounded-full bg-gray-200">
+            {lenguaje.name}
+          </li>
+        );
+      }
     })
   }
 </ul>
