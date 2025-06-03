@@ -17,12 +17,12 @@
 }
 * {
   scroll-behavior: smooth;
-  /* font-family: "Montserrat", "Onest Variable", system-ui, sans-serif; */
-  font-family: "Poppins", "Onest Variable", system-ui, sans-serif;
+  font-family: "Onest Variable", system-ui, sans-serif;
   box-sizing: border-box;
 }
-::-webkit-scrollbar {
+*::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
   border-radius: 8px;
 }
 *::-webkit-scrollbar-track {

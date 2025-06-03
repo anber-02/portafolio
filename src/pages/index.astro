@@ -4,10 +4,11 @@ import Projects from "../components/Projects.astro";
 import SectionContainer from "../components/SectionContainer.astro";
 import AboutMe from "../components/AboutMe.astro";
 import Home from "../components/Home.astro";
+import Education from "../components/Education.astro";
 ---
 
 <Layout title="Portafolio Anberto - Programador ">
-  <main class="py-16 md:pb-36 md:pt-28">
+  <main class="py-16 md:py-36">
     <SectionContainer id="inicio" class="">
       <Home />
     </SectionContainer>
@@ -16,6 +17,14 @@ import Home from "../components/Home.astro";
         <Projects />
       </SectionContainer>
 
+      <SectionContainer id="education">
+        <h2
+          class="mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+        >
+          Educación
+        </h2>
+        <Education />
+      </SectionContainer>
       <SectionContainer id="sobre-mi">
         <h2
           class="mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"

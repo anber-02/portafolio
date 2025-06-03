@@ -9,22 +9,26 @@ import Technologies from "./Technologies.astro";
 import { Image } from "astro:assets";
 ---
 
-<div class="w-full h-[calc(100vh-150px)] flex justify-between">
-  <div class="flex-1">
-    <h1 class="text-text text-5xl font-bold pb-6 flex items-center space-x-8">
-      Hi!, I am Anberto
-    </h1>
-    <h2 class="text-xl text-balance max-w-[700px] text-textSecondary">
+<div
+  class="w-full sm:h-[calc(100vh-150px)] flex justify-between flex-col sm:flex-row gap-2"
+>
+  <div class="flex-1 w-full sm:w-3/4 overflow-hidden">
+    <div
+      class="flex items-center m-0 py-3 pr-8 w-max bg-gradient-to-r from-cyan-600 to-cyan-900 rounded-tr-full rounded-br-full mb-6"
+    >
+      <h1 class="text-4xl sm:text-5xl font-bold flex items-center space-x-8">
+        Hola!, soy Anberto
+      </h1>
+    </div>
+    <h2 class="text-xl text-balance max-w-[700px]">
       <span class="text-cyan-300"
-        >Full-Stack Developer and information technologies engineer</span
-      > based in Mexico with experience through university projects, internships
-      and side projects.
-      <br />
-
-      <br />
+        >Desarrollador Full-Stack e Ingeniero en Tecnologías de la Información</span
+      > de Mexico con experiencia en proyectos <i
+        >(universitarios, practicas profesionales y proyectos personales)</i
+      >
     </h2>
 
-    <nav class="flex gap-3 mt-8 flex-wrap">
+    <nav class="flex gap-2 mt-8 flex-wrap">
       <SocialIcon href="https://www.linkedin.com/in/luisanberto/">
         <LinkedIn class="w-6 h-6" />
         LinkedIn
@@ -33,7 +37,7 @@ import { Image } from "astro:assets";
         <Github class="w-6 h-6" />
         GitHub
       </SocialIcon>
-      <SocialIcon href="mailto:anberdev@gmail.com">
+      <SocialIcon href="mailto:anbertodev@gmail.com">
         <Contact class="w-6 h-6" />
         Contacto
       </SocialIcon>
@@ -41,7 +45,7 @@ import { Image } from "astro:assets";
 
     <Technologies />
   </div>
-  <div class="w-64 relative h-4/6">
+  <div class="w-64 relative h-64 sm:h-4/6 self-center sm:self-start">
     <div
       class="absolute inset-0 border-cyan-300 opacity-10 rounded-full border-3 translate-y-2 translate-x-6"
     >

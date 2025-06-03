@@ -1,49 +1,56 @@
 ---
 import Github from "../icons/Github.astro";
 import PreviewIcon from "../icons/PreviewIcon.astro";
-import type { Project } from "../types/types";
+// import type { Project } from "../types/types";
 import ButtonCard from "./ButtonCard.astro";
 import Chips from "./Chips.astro";
-interface Props {
-  project: Project;
-}
+import { Image } from "astro:assets";
+// interface Props {
+//   project: Project;
+// }
 
 const { project } = Astro.props;
 ---
 
-<!-- class="flex flex-col md:flex-row p-2 gap-4 text-white rounded-md relative h-auto group md:space-x-6 w-full" -->
-<div class="break-inside-avoid rounded overflow-hidden shadow bg-white p-4">
-  <figure
-    class="relative md:w-1/2 flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50"
+<div
+  class="break-inside-avoid overflow-hidden shadow cursor-pointer group relative rounded-xl"
+>
+  <div class="relative">
+    <figure
+      class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50"
+    >
+      <Image
+        src={project.image}
+        height={200}
+        width={200}
+        loading="lazy"
+        alt={`image de ${project.name}`}
+        class="object-cover object-top w-full h-full transition duration-500 md:scale-110 md:group-hover:scale-105"
+      />
+    </figure>
+    <Chips languages={project.languages} />
+  </div>
+  <div
+    class="bg-slate-800/50 p-1 absolute top-0 left-0 right-0 flex gap-1 justify-between items-center opacity-0 transition duration-500 ease-in-out group-hover:opacity-100"
   >
-    <img
-      src={project.image}
-      loading="lazy"
-      alt={`image de ${project.name}`}
-      class="object-cover object-top w-full h-full transition duration-500 md:scale-110 md:group-hover:scale-105"
-    />
-  </figure>
-
-  <div class="w-full md:w-1/2 md:max-w-lg flex flex-col justify-between">
-    <div>
-      <h3
-        class="text-2xl font-bold text-gray-800 dark:text-gray-100 first-letter:uppercase"
-      >
-        {project.name}
-      </h3>
-      <Chips languages={project.languages} />
-    </div>
-
-    <div class="mt-2 text-gray-700 dark:text-gray-400 first-letter:uppercase">
-      {project.description}
-    </div>
-    <div class="flex gap-3 flex-wrap">
-      <ButtonCard link={project.github} text="Repositorio">
+    <h3
+      class="flex gap-x-2 items-end font-bold text-gray-800 dark:text-gray-100 first-letter:uppercase"
+    >
+      {project.name}
+    </h3>
+    <div class="gap-1 flex-wrap">
+      <ButtonCard link={project.github} class="">
         <Github class="w-6 h-6" />
       </ButtonCard>
-      <ButtonCard link={project.preview} text="Preview">
+      <ButtonCard link={project.preview}>
         <PreviewIcon class="w-6 h-6" />
       </ButtonCard>
+    </div>
+  </div>
+
+  <div class="w-full flex flex-col justify-between">
+    <div class="mt-2 text-gray-700 dark:text-gray-400 first-letter:uppercase">
+      {project.description}
     </div>
   </div>
 </div>

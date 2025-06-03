@@ -8,7 +8,9 @@ import { TAGS } from "../data/data";
 type LanguageName = keyof typeof TAGS;
 ---
 
-<ul class="flex flex-row mb-2 gap-x-2">
+<ul
+  class="absolute bottom-0 left-2 right-0 flex mb-1 gap-x-2 items-end transition-transform"
+>
   {
     languages.map((lenguaje) => {
       const name: string = lenguaje.name.toUpperCase();
@@ -18,7 +20,7 @@ type LanguageName = keyof typeof TAGS;
         return (
           <li>
             <span
-              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 items-center`}
+              class={`flex gap-x-1 rounded-full text-xs ${tag.class} py-0.5 px-2 items-center`}
             >
               <tag.icon class="w-4 h-4" />
               {tag.name}
@@ -35,3 +37,21 @@ type LanguageName = keyof typeof TAGS;
     })
   }
 </ul>
+<style>
+  .animate-scroll {
+    animation: scroll 10s linear infinite;
+  }
+
+  li {
+    transition: transform 0.3s ease;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>
