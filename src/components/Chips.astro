@@ -10,9 +10,9 @@ type LanguageName = keyof typeof TAGS;
 
 <ul class="flex flex-row mb-2 gap-x-2">
   {
-    languages.map((lenguaje: any) => {
+    languages.map((lenguaje) => {
       const name: string = lenguaje.name.toUpperCase();
-      const tag = TAGS[name];
+      const tag = TAGS[name as LanguageName];
 
       if (tag) {
         return (
@@ -20,7 +20,7 @@ type LanguageName = keyof typeof TAGS;
             <span
               class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 items-center`}
             >
-              <tag.icon class="w-4 h-4"/>
+              <tag.icon class="w-4 h-4" />
               {tag.name}
             </span>
           </li>

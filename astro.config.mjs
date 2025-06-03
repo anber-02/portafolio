@@ -1,13 +1,15 @@
-import { defineConfig } from 'astro/config';
-import tailwind from "@astrojs/tailwind";
-// import netlify from "@astrojs/netlify/functions";
+import { defineConfig } from "astro/config";
 
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
+import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  // integrations: [tailwind()],
   output: "server",
-  adapter: vercel()
+  adapter: vercel(),
 });
 0;

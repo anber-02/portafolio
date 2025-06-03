@@ -1,0 +1,106 @@
+---
+import Github from "../icons/Github.astro";
+import React from "../icons/React.astro";
+import Tailwind from "../icons/Tailwind.astro";
+import MySQL from "../icons/Mysql.astro";
+import NodeJS from "../icons/NodeJS.astro";
+import NestJS from "../icons/NestJS.astro";
+import Ionic from "../icons/Ionic.astro";
+import Angular from "../icons/Angular.astro";
+import Typescript from "../icons/Typescript.astro";
+
+const ALL_TECHNOLOGIES = [
+  { name: "Github", icon: Github, color: "#fff" },
+  { name: "ReactJS", icon: React, color: "#61DAFB" },
+  { name: "TailwindCSS", icon: Tailwind, color: "#38BDF8" },
+  { name: "MySQL", icon: MySQL, color: "#4479A1" },
+  { name: "NodeJS", icon: NodeJS, color: "#339933" },
+  { name: "NestJS", icon: NestJS, color: "#E0234E" },
+  { name: "Ionic", icon: Ionic, color: "#3880FF" },
+  { name: "Angular", icon: Angular, color: "#DD0031" },
+  { name: "Typescript", icon: Typescript, color: "#3178C6" },
+];
+---
+
+<div class="carousel">
+  <div class="carousel-track">
+    {
+      ALL_TECHNOLOGIES.map((item) => (
+        <div class="tooltip">
+          <item.icon
+            class="h-6 w-6 carousel-item"
+            style={`color: ${item.color}`}
+          />
+          <span class="tooltip-text">{item.name}</span>
+        </div>
+      ))
+    }{
+      ALL_TECHNOLOGIES.map((item) => (
+        <div class="tooltip">
+          <item.icon
+            class="h-6 w-6 carousel-item"
+            style={`color: ${item.color}`}
+          />
+          <span class="tooltip-text">{item.name}</span>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .tooltip {
+    position: relative;
+  }
+  .tooltip-text {
+    position: absolute;
+    visibility: hidden;
+    text-align: center;
+    padding: 4px 8px;
+    border-radius: 4px;
+    /* bottom: 125%; */
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.75rem;
+    z-index: 10;
+  }
+  .tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+  .carousel {
+    overflow: hidden;
+    width: 500px;
+    padding: 40px 0;
+  }
+  .carousel-track {
+    display: flex;
+    gap: 2rem;
+    width: calc(200%);
+    animation: scroll 20s linear infinite;
+    cursor: pointer;
+  }
+  .carousel-item {
+    flex: 0 0 auto;
+    width: 40px;
+    transition: transform 0.3s ease;
+  }
+
+  .carousel-item:hover {
+    transform: scale(1.5);
+  }
+  .carousel-track:hover {
+    animation-play-state: paused;
+  }
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>

@@ -82,7 +82,14 @@ const navItems = [
 
   @keyframes nav-shadown {
     to {
-      @apply shadow-lg ring-1 backdrop-blur  bg-slate-600/50 ring-white/10;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+              0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-lg */
+  border-width: 1px;                              /* ring-1 */
+  border-color: rgba(255, 255, 255, 0.1);         /* ring-white/10 */
+  backdrop-filter: blur(8px);                     /* backdrop-blur */
+  background-color: rgba(71, 85, 105, 0.5);        /* bg-slate-600/50 */
+      /* @apply shadow-lg ring-1 backdrop-blur  bg-slate-600/50 ring-white/10; */
     }
   }
 </style>
+ 

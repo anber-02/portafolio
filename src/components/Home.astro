@@ -3,35 +3,64 @@ import LinkedIn from "../icons/LinkedIn.astro";
 import SocialIcon from "./SocialIcon.astro";
 import Github from "../icons/Github.astro";
 import Contact from "../icons/Contact.astro";
+import ProfileImage from "../../public/profile1.png";
+import Technologies from "./Technologies.astro";
+
+import { Image } from "astro:assets";
 ---
 
-<div class="max-w-xl">
-  <h1
-    class="text-text text-5xl font-bold pb-6 flex items-center space-x-8"
-  >
-    Hola, soy Anberto
-  </h1>
-  <h2
-    class="text-xl  text-balance max-w-[700px] text-textSecondary"
-  >
-  Ingeniero en Tecnologías de la Información. Desarrollador de software con un fuerte enfoque en desarrollo backend y un poco de front.
-  <br />
-  
-    <br />
-  </h2>
+<div class="w-full h-[calc(100vh-150px)] flex justify-between">
+  <div class="flex-1">
+    <h1 class="text-text text-5xl font-bold pb-6 flex items-center space-x-8">
+      Hi!, I am Anberto
+    </h1>
+    <h2 class="text-xl text-balance max-w-[700px] text-textSecondary">
+      <span class="text-cyan-300"
+        >Full-Stack Developer and information technologies engineer</span
+      > based in Mexico with experience through university projects, internships
+      and side projects.
+      <br />
 
-  <nav class="flex gap-3 mt-8 flex-wrap">
-    <SocialIcon href="https://www.linkedin.com/in/luisanberto/">
-      <LinkedIn class="w-6 h-6" />
-      LinkedIn
-    </SocialIcon>
-    <SocialIcon href="https://github.com/anber-02">
-      <Github class="w-6 h-6" />
-      GitHub
-    </SocialIcon>
-    <SocialIcon href="mailto:anberdev@gmail.com">
-      <Contact  class="w-6 h-6"/>
-      Contacto
-    </SocialIcon>
-  </nav>
+      <br />
+    </h2>
+
+    <nav class="flex gap-3 mt-8 flex-wrap">
+      <SocialIcon href="https://www.linkedin.com/in/luisanberto/">
+        <LinkedIn class="w-6 h-6" />
+        LinkedIn
+      </SocialIcon>
+      <SocialIcon href="https://github.com/anber-02">
+        <Github class="w-6 h-6" />
+        GitHub
+      </SocialIcon>
+      <SocialIcon href="mailto:anberdev@gmail.com">
+        <Contact class="w-6 h-6" />
+        Contacto
+      </SocialIcon>
+    </nav>
+
+    <Technologies />
+  </div>
+  <div class="w-64 relative h-4/6">
+    <div
+      class="absolute inset-0 border-cyan-300 opacity-10 rounded-full border-3 translate-y-2 translate-x-6"
+    >
+    </div>
+    <figure
+      style="background: radial-gradient(circle at center, #7c3aed 40%, rgba(0, 0, 0, 0.8) 100%)"
+      class="relative bg-purple-500 z-50 w-full h-full rounded-full overflow-hidden"
+    >
+      <Image
+        src={ProfileImage}
+        alt="Profile picture"
+        class="object-cover w-full h-full object-top"
+      />
+    </figure>
+  </div>
 </div>
+
+<style>
+  img {
+    /* mask-image: linear-gradient(black 80%, black); */
+  }
+</style>
