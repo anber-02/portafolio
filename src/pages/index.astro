@@ -5,34 +5,99 @@ import SectionContainer from "../components/SectionContainer.astro";
 import AboutMe from "../components/AboutMe.astro";
 import Home from "../components/Home.astro";
 import Education from "../components/Education.astro";
+import Technologies from "../components/Technologies.astro";
+import SocialIcon from "../components/SocialIcon.astro";
+import LinkedIn from "../icons/LinkedIn.astro";
+import Github from "../icons/Github.astro";
+import Contact from "../icons/Contact.astro";
+import Avatar from "../components/Avatar.astro";
+import Experience from "../components/Experience.astro";
 ---
 
 <Layout title="Portafolio Anberto - Programador ">
-  <main class="py-16 md:py-36">
-    <SectionContainer id="inicio" class="">
-      <Home />
-    </SectionContainer>
-    <div class="space-y-24">
-      <SectionContainer id="proyectos">
-        <Projects />
-      </SectionContainer>
+  <main class="py-4 px-2 max-w-6xl mx-auto w-full h-screen">
+    <div
+      class="grid grid-cols-1 md:grid-cols-12 grid-rows-auto gap-4 text-white mx-auto h-full"
+    >
+      <!-- Presentación -->
+      <div
+        class="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-md p-6 md:col-span-4 md:row-span-2"
+      >
+        <h1 class="text-4xl font-extrabold mb-4">Hola, soy Anberto</h1>
+        <p class="text-normal text-gray-100">
+          <span class="text-yellow-300 font-semibold">
+            Desarrollador Full-Stack e Ingeniero en Desarrollo y Gestión de
+            Software
+          </span>
+          de México.
+        </p>
+      </div>
 
-      <SectionContainer id="education">
-        <h2
-          class="mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
+      <!-- Avatar -->
+      <div
+        class="bg-slate-800 rounded-md flex items-center justify-center md:col-span-3 md:row-span-2 md:col-start-5"
+      >
+        <Avatar />
+      </div>
+
+      <!-- Sobre mí -->
+      <div
+        class="bg-slate/10 border-white/20 border-2 backdrop-blur-md rounded-md p-4 md:col-span-5 md:row-span-4 md:col-start-8"
+      >
+        <!-- <AboutMe /> -->
+        <Experience />
+      </div>
+
+      <!-- Redes -->
+      <div
+        class="md:col-span-3 md:col-start-5 md:row-start-3 flex items-center justify-around rounded-md gap-2"
+      >
+        <SocialIcon href="https://github.com/anber-02">
+          <Github class="w-6 h-6 text-gray-300 hover:text-white" />
+        </SocialIcon>
+        <SocialIcon href="https://www.linkedin.com/in/luisanberto/">
+          <LinkedIn class="w-6 h-6 text-gray-300 hover:text-white" />
+        </SocialIcon>
+        <SocialIcon href="mailto:anbertodev@gmail.com">
+          <Contact class="w-6 h-6 text-gray-300 hover:text-white" />
+        </SocialIcon>
+      </div>
+
+      <!-- CV Button -->
+      <div
+        class="flex items-center justify-center md:col-span-3 md:col-start-5 md:row-start-4"
+      >
+        <button
+          class="bg-yellow-400 text-slate-700 w-full font-bold uppercase tracking-widest px-4 py-2 rounded-md hover:bg-yellow-500 transition"
         >
-          Educación
-        </h2>
+          Descargar CV
+        </button>
+      </div>
+
+      <!-- Title Experience -->
+      <div
+        class="rounded-md flex items-center justify-center text-center bg-indigo-700 md:col-span-4 md:row-span-2 md:col-start-1 md:row-start-3"
+      >
+        <h3 class="text-3xl font-extrabold tracking-wide">EXPERIENCIA</h3>
+      </div>
+
+      <!-- Proyectos -->
+      <div class="rounded-md md:col-span-12 md:row-span-6 md:row-start-5">
+        <Projects />
+      </div>
+
+      <!-- Detalles de educación -->
+      <div class="md:col-span-5 md:row-span-2 md:row-start-11">
         <Education />
-      </SectionContainer>
-      <SectionContainer id="sobre-mi">
-        <h2
-          class="mb-6 text-3xl font-semibold gap-x-3 text-black/80 dark:text-white"
-        >
-          Sobre Mi
-        </h2>
+      </div>
+
+      <!-- Tecnologías / stack -->
+      <div
+        class="border-2 border-white/20 rounded-md p-4 md:col-span-7 md:row-span-2 md:col-start-6 md:row-start-11"
+      >
+        <!-- <Technologies /> -->
         <AboutMe />
-      </SectionContainer>
+      </div>
     </div>
   </main>
 </Layout>

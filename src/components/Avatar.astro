@@ -1,0 +1,17 @@
+---
+import { Image } from "astro:assets";
+import ProfileImage from "../../public/profile1.png";
+---
+
+<div class="relative h-full self-center sm:self-start">
+  <figure
+    style="background: radial-gradient(circle at center, #2947f5 40%, rgba(0, 0, 0, 0.2) 100%)"
+    class="relative bg-purple-500 z-10 w-full h-full overflow-hidden"
+  >
+    <Image
+      src={ProfileImage}
+      alt="Profile picture"
+      class="object-cover w-full h-full object-top"
+    />
+  </figure>
+</div>

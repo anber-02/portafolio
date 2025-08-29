@@ -1,0 +1,174 @@
+---
+const EXPERIENCE = [
+  {
+    company: "Corporativa Red OSMO",
+    position: "Full Stack Developer",
+    period: "Enero - Abril 2025",
+    location: "Oaxaca, México",
+    description:
+      "Desarrollo de una plataforma web interna usando React y Node.js. Integración con base de datos MySQL y autenticación JWT.",
+  },
+  {
+    company: "Volkswagen",
+    position: "Full Stack Developer",
+    period: "Mayo - Agosto 2023",
+    location: "Oaxaca, México",
+    description:
+      "Desarrollo de una plataforma web interna usando React y Node.js. Integración con base de datos MySQL y autenticación JWT.",
+  },
+];
+---
+
+<div class="space-y-4">
+    {
+      EXPERIENCE.map((exp, index) => {
+        return (
+          <div class="experience border-l-2 border-amber-400 pl-4 cursor-pointer group transition-all duration-300" data-index={index}>
+            <h4 class="text-white font-medium text-sm">{exp.position}</h4>
+            <p class="text-amber-400 text-sm font-medium">{exp.company}</p>
+            <div class="flex justify-between items-center mt-1">
+              <span class="text-slate-400 text-xs">{exp.period}</span>
+              <span class="text-slate-400 text-xs">{exp.location}</span>
+            </div>
+            
+            <!-- Descripción que se mostrará al hacer click -->
+            <div class="description hidden mt-4 p-4 bg-slate-800/50 rounded-lg border border-amber-400/20">
+              <p class="text-slate-300 text-sm leading-relaxed">{exp.description}</p>
+            </div>
+          </div>
+        );
+      })
+    }
+</div>
+
+<script>
+  console.log("Sistema de experiencias cargado");
+  
+  // Datos de experiencia para usar en JavaScript
+  const EXPERIENCE_DATA = [
+    {
+      company: "Corporativa Red OSMO",
+      position: "Full Stack Developer",
+      period: "Enero - Abril 2025", 
+      location: "Oaxaca, México",
+      description: "Desarrollo de una plataforma web interna usando React y Node.js. Integración con base de datos MySQL y autenticación JWT."
+    },
+    {
+      company: "Volkswagen", 
+      position: "Full Stack Developer",
+      period: "Mayo - Agosto 2023",
+      location: "Oaxaca, México", 
+      description: "Desarrollo de una plataforma web interna usando React y Node.js. Integración con base de datos MySQL y autenticación JWT."
+    }
+  ];
+
+  let currentOpenExperience = null;
+
+  const experienceElements = document.querySelectorAll(".experience");
+  
+  experienceElements.forEach((element, index) => {
+    const description = element.querySelector(".description");
+    
+    // Event listener para el click principal
+    element.addEventListener("click", (e) => {
+
+      
+      console.log(`Experiencia ${index + 1} clickeada: ${EXPERIENCE_DATA[index].company}`);
+      
+      // Si hay otra experiencia abierta, cerrarla primero
+      if (currentOpenExperience !== null && currentOpenExperience !== index) {
+        closeExperience(currentOpenExperience);
+      }
+      
+      // Toggle de la experiencia actual
+      if (description.classList.contains("hidden")) {
+        openExperience(index);
+      } else {
+        closeExperience(index);
+      }
+    });
+    
+  });
+
+  function openExperience(index) {
+    const element = experienceElements[index];
+    const description = element.querySelector(".description");
+    
+    // Mostrar descripción
+    description.classList.remove("hidden");
+    element.classList.add("bg-slate-900/30", "border-amber-500");
+    
+    // Animación de entrada
+    description.style.opacity = "0";
+    description.style.transform = "translateY(-10px)";
+    
+    setTimeout(() => {
+      description.style.transition = "all 0.3s ease";
+      description.style.opacity = "1";
+      description.style.transform = "translateY(0)";
+    }, 10);
+    
+    currentOpenExperience = index;
+    console.log(`Descripción abierta para: ${EXPERIENCE_DATA[index].company}`);
+  }
+
+  function closeExperience(index) {
+    const element = experienceElements[index];
+    const description = element.querySelector(".description");
+    
+    // Animación de salida
+    description.style.transition = "all 0.2s ease";
+    description.style.opacity = "0";
+    description.style.transform = "translateY(-10px)";
+    
+    setTimeout(() => {
+      description.classList.add("hidden");
+      element.classList.remove("bg-slate-900/30", "border-amber-500");
+      description.style.transform = "none";
+    }, 200);
+    
+    currentOpenExperience = null;
+    console.log(`Descripción cerrada para: ${EXPERIENCE_DATA[index].company}`);
+  }
+
+  // Cerrar al hacer click fuera
+  document.addEventListener("click", (e) => {
+    const clickedInsideExperience = e.target.closest(".experience");
+    
+    if (!clickedInsideExperience && currentOpenExperience !== null) {
+      closeExperience(currentOpenExperience);
+      console.log("Descripción cerrada por click externo");
+    }
+  });
+</script>
+
+<style>
+  .experience {
+    transition: all 0.3s ease;
+  }
+  
+  .experience:hover {
+    transform: translateX(2px);
+    background-color: rgba(30, 41, 59, 0.1);
+    border-radius: 0 8px 8px 0;
+  }
+  
+  .description {
+    animation: slideDown 0.3s ease-out forwards;
+  }
+  
+  @keyframes slideDown {
+    from {
+      max-height: 0;
+      opacity: 0;
+    }
+    to {
+      max-height: 200px;
+      opacity: 1;
+    }
+  }
+  
+  .close-btn:hover {
+    transform: scale(1.1);
+  }
+</style>

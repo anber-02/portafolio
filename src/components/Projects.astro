@@ -5,51 +5,26 @@ import Project from "./Project.astro";
 const projects = await getProjects();
 ---
 
-<h2 class="text-2xl sm:text-4xl font-bold text-gray-200">Proyectos</h2>
-<p class="block font-semibold text-gray-400 py-2">Trabajos recientes</p>
-<div class="columns-1 sm:columns-2 space-y-4 gap-4">
-  {
-    projects?.map((project) => {
-      return (
-        <div class="break-inside-avoid">
-          <Project project={project} />
-        </div>
-      );
-    })
-  }
+<div
+  class="grid grid-cols-1 md:grid-cols-6 md:grid-rows-6 h-full w-full md:gap-4 space-y-4"
+>
+  <!-- PROYECTOS -->
+  <div
+    class="flex flex-col justify-center items-center bg-blue-950 text-yellow-400 tracking-widest text-3xl font-extrabold md:rotate-180 md:[writing-mode:vertical-rl] rounded-md md:col-start-1 md:row-span-6 md:row-start-1"
+  >
+    PROYECTOS
+  </div>
+
+  <!-- Projects Component -->
+  <div class="col-span-5 row-span-6 h-full">
+    <div class="columns-1 md:columns-2 gap-4 space-y-4">
+      {
+        projects?.map((project) => {
+          return <Project key={project.id} project={project} />;
+        })
+      }
+    </div>
+  </div>
 </div>
 
-<style>
-  .masonry-container {
-    columns: 1;
-    column-gap: 1rem;
-    width: 100%;
-  }
-
-  .masonry-container > :global(*) {
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 1rem;
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
-
-  /* Responsive breakpoints */
-  @media (min-width: 640px) {
-    .masonry-container {
-      columns: 2;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .masonry-container {
-      columns: 2;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .masonry-container {
-      columns: 3;
-    }
-  }
-</style>
+<style></style>
