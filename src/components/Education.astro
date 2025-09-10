@@ -16,36 +16,20 @@ const educations = [
 ];
 ---
 
-<div
-  class="grid grid-cols-1 md:grid-cols-6 md:grid-rows-6 h-full w-full md:gap-4 space-y-4 md:space-y-0"
->
-  <!-- Detalles de educación -->
-  <div
-    class="flex col-span-5 row-span-6 h-full p-4 border-2 border-white/20 rounded-md"
-  >
-    <div class="space-y-6 md:space-y-4">
-      {
-        educations.map((exp, index) => (
-          <div
-            class="experience border-l-2 border-amber-400 pl-4 cursor-pointer group transition-all duration-300"
-            data-index={index}
-          >
-            <h4 class="text-white font-medium text-sm">{exp.position}</h4>
-            <p class="text-amber-400 text-sm font-medium">{exp.company}</p>
-            <div class="flex justify-between items-center mt-1">
-              <span class="text-slate-400 text-xs">{exp.period}</span>
-              <span class="text-slate-400 text-xs">{exp.location}</span>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </div>
-
-  <!-- Texto EDUCACIÓN a la derecha -->
-  <div
-    class="flex flex-col justify-center items-center bg-blue-950 text-yellow-400 tracking-widest text-3xl font-extrabold md:rotate-180 md:[writing-mode:vertical-rl] rounded-md md:col-start-6 md:row-span-6 md:row-start-1"
-  >
-    EDUCACIÓN
-  </div>
+<div class="flex flex-col space-y-4 h-full rounded-md">
+  {
+    educations.map((exp, index) => (
+      <div
+        class="experience border-l-2 border-blue-400 pl-4 cursor-pointer group transition-all duration-300"
+        data-index={index}
+      >
+        <h4 class="text-white font-medium text-sm">{exp.position}</h4>
+        <p class="text-blue-400 text-sm font-medium">{exp.company}</p>
+        <div class="flex justify-between items-center mt-1">
+          <span class="text-slate-400 text-xs">{exp.period}</span>
+          <span class="text-slate-400 text-xs">{exp.location}</span>
+        </div>
+      </div>
+    ))
+  }
 </div>

@@ -5,66 +5,37 @@ import Github from "../icons/Github.astro";
 import Contact from "../icons/Contact.astro";
 import ProfileImage from "../../public/profile1.png";
 import Technologies from "./Technologies.astro";
-
 import { Image } from "astro:assets";
 ---
 
 <div
-  class="w-full sm:h-[calc(100vh-150px)] flex justify-between flex-col sm:flex-row gap-2"
+  class="w-full sm:min-h-screen flex justify-start md:items-center flex-col md:flex-row gap-8 md:justify-between"
 >
-  <div class="flex-1 w-full sm:w-3/4 overflow-hidden">
-    <div
-      class="flex items-center m-0 py-3 pr-8 w-max bg-gradient-to-r from-cyan-600 to-cyan-900 rounded-tr-full rounded-br-full mb-6"
-    >
-      <h1 class="text-4xl sm:text-5xl font-bold flex items-center space-x-8">
-        Hola!, soy Anberto
-      </h1>
-    </div>
-    <h2 class="text-xl text-balance max-w-[700px]">
-      <span class="text-cyan-300"
-        >Desarrollador Full-Stack e Ingeniero en Tecnologías de la Información</span
-      > de Mexico con experiencia en proyectos <i
-        >(universitarios, practicas profesionales y proyectos personales)</i
-      >
-    </h2>
-
-    <nav class="flex gap-2 mt-8 flex-wrap">
-      <SocialIcon href="https://www.linkedin.com/in/luisanberto/">
-        <LinkedIn class="w-6 h-6" />
-        LinkedIn
-      </SocialIcon>
-      <SocialIcon href="https://github.com/anber-02">
-        <Github class="w-6 h-6" />
-        GitHub
-      </SocialIcon>
-      <SocialIcon href="mailto:anbertodev@gmail.com">
-        <Contact class="w-6 h-6" />
-        Contacto
-      </SocialIcon>
-    </nav>
-
-    <Technologies />
+  <div class="flex flex-col md:w-3/4 overflow-hidden space-y-6">
+    <h1 class="text-4xl sm:text-5xl font-extrabold">Hola, soy Anber</h1>
+    <p class="text-lg text-gray-100">
+      <span class="text-blue-300 font-semibold">
+        Desarrollador Full-Stack e Ingeniero en Desarrollo y Gestión de Software
+      </span>
+      de México. +1 año de experiencia en <span class="text-white font-medium"
+        >Python</span
+      > y <span class="text-white font-medium">JavaScript</span>, especializado
+      en desarrollo web fullstack y bases de datos.
+    </p>
   </div>
-  <div class="w-64 relative h-64 sm:h-4/6 self-center sm:self-start">
-    <div
-      class="absolute inset-0 border-cyan-300 opacity-10 rounded-full border-3 translate-y-2 translate-x-6"
-    >
-    </div>
-    <figure
-      style="background: radial-gradient(circle at center, #7c3aed 40%, rgba(0, 0, 0, 0.8) 100%)"
-      class="relative bg-purple-500 z-10 w-full h-full rounded-full overflow-hidden"
-    >
-      <Image
-        src={ProfileImage}
-        alt="Profile picture"
-        class="object-cover w-full h-full object-top"
-      />
-    </figure>
-  </div>
+  <figure
+    class="w-48 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden border-4 border-blue-300 self-center"
+  >
+    <Image
+      src={ProfileImage}
+      alt="Profile picture"
+      class="object-cover w-full h-full object-top"
+    />
+  </figure>
 </div>
 
 <style>
   img {
-    /* mask-image: linear-gradient(black 80%, black); */
+    mask-image: linear-gradient(black 80%, transparent);
   }
 </style>

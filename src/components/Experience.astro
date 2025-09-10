@@ -3,172 +3,55 @@ const EXPERIENCE = [
   {
     company: "Corporativa Red OSMO",
     position: "Full Stack Developer",
-    period: "Enero - Abril 2025",
+    period: "Enero – Abril 2025",
     location: "Oaxaca, México",
-    description:
-      "Desarrollo de una plataforma web interna usando React y Node.js. Integración con base de datos MySQL y autenticación JWT.",
+    description: `
+Lideré el desarrollo de una **plataforma de gestión de inventario** utilizando **Django REST Framework** y **SQL Server**, coordinando al equipo para cumplir objetivos y entregas clave.
+
+    `,
   },
   {
     company: "Volkswagen",
     position: "Full Stack Developer",
-    period: "Mayo - Agosto 2023",
+    period: "Mayo – Agosto 2023",
     location: "Oaxaca, México",
-    description:
-      "Desarrollo de una plataforma web interna usando React y Node.js. Integración con base de datos MySQL y autenticación JWT.",
+    description: `
+Desarrollé una plataforma interna de gestión de capacitaciones con **Laravel, MySQL y JavaScript**, optimizando el seguimiento del desarrollo profesional y facilitando decisiones estratégicas en RH.
+
+`,
   },
 ];
 ---
 
-<div class="space-y-4">
-    {
-      EXPERIENCE.map((exp, index) => {
-        return (
-          <div class="experience border-l-2 border-amber-400 pl-4 cursor-pointer group transition-all duration-300" data-index={index}>
-            <h4 class="text-white font-medium text-sm">{exp.position}</h4>
-            <p class="text-amber-400 text-sm font-medium">{exp.company}</p>
-            <div class="flex justify-between items-center mt-1">
-              <span class="text-slate-400 text-xs">{exp.period}</span>
-              <span class="text-slate-400 text-xs">{exp.location}</span>
-            </div>
-            
-            <!-- Descripción que se mostrará al hacer click -->
-            <div class="description hidden mt-4 p-4 bg-slate-800/50 rounded-lg border border-amber-400/20">
-              <p class="text-slate-300 text-sm leading-relaxed">{exp.description}</p>
-            </div>
+<div class="space-y-8">
+  {
+    EXPERIENCE.map((exp, index) => {
+      return (
+        <div
+          class="experience border-l-2 border-blue-400 pl-4 cursor-pointer group transition-all duration-300 grid grid-cols-8 gap-2 md:gap-8 w-full"
+          data-index={index}
+        >
+          <div class="col-span-8 md:col-span-3">
+            <h4 class="text-white font-medium text-normal">
+              <span class="text-blue-400">{exp.position}</span>{" "}
+              <span class="text-slate-400">en</span> {exp.company}
+            </h4>
+            <span class="text-slate-400 text-xs">
+              {exp.period} [{exp.location}]
+            </span>
           </div>
-        );
-      })
-    }
+
+          <div class="col-span-8 md:col-span-5 max-w-none text-slate-300 leading-relaxed">
+            <div
+              set:html={exp.description.replace(
+                /\*\*(.*?)\*\*/g,
+                '<strong class="text-blue-300">$1</strong>'
+              )}
+              class="whitespace-pre-line [&>ul]:list-none [&>ul]:pl-0 [&>ul>li]:flex [&>ul>li]:items-start [&>ul>li]:gap-2 [&>ul>li]:mb-2 [&>ul>li]:before:content-[''] [&>ul>li]:before:w-1.5 [&>ul>li]:before:rounded-full [&>ul>li]:before:bg-blue-400"
+            />
+          </div>
+        </div>
+      );
+    })
+  }
 </div>
-
-<script>
-  console.log("Sistema de experiencias cargado");
-  
-  // Datos de experiencia para usar en JavaScript
-  const EXPERIENCE_DATA = [
-    {
-      company: "Corporativa Red OSMO",
-      position: "Full Stack Developer",
-      period: "Enero - Abril 2025", 
-      location: "Oaxaca, México",
-      description: "Desarrollo de una plataforma web interna usando React y Node.js. Integración con base de datos MySQL y autenticación JWT."
-    },
-    {
-      company: "Volkswagen", 
-      position: "Full Stack Developer",
-      period: "Mayo - Agosto 2023",
-      location: "Oaxaca, México", 
-      description: "Desarrollo de una plataforma web interna usando React y Node.js. Integración con base de datos MySQL y autenticación JWT."
-    }
-  ];
-
-  let currentOpenExperience = null;
-
-  const experienceElements = document.querySelectorAll(".experience");
-  
-  experienceElements.forEach((element, index) => {
-    const description = element.querySelector(".description");
-    
-    // Event listener para el click principal
-    element.addEventListener("click", (e) => {
-
-      
-      console.log(`Experiencia ${index + 1} clickeada: ${EXPERIENCE_DATA[index].company}`);
-      
-      // Si hay otra experiencia abierta, cerrarla primero
-      if (currentOpenExperience !== null && currentOpenExperience !== index) {
-        closeExperience(currentOpenExperience);
-      }
-      
-      // Toggle de la experiencia actual
-      if (description.classList.contains("hidden")) {
-        openExperience(index);
-      } else {
-        closeExperience(index);
-      }
-    });
-    
-  });
-
-  function openExperience(index) {
-    const element = experienceElements[index];
-    const description = element.querySelector(".description");
-    
-    // Mostrar descripción
-    description.classList.remove("hidden");
-    element.classList.add("bg-slate-900/30", "border-amber-500");
-    
-    // Animación de entrada
-    description.style.opacity = "0";
-    description.style.transform = "translateY(-10px)";
-    
-    setTimeout(() => {
-      description.style.transition = "all 0.3s ease";
-      description.style.opacity = "1";
-      description.style.transform = "translateY(0)";
-    }, 10);
-    
-    currentOpenExperience = index;
-    console.log(`Descripción abierta para: ${EXPERIENCE_DATA[index].company}`);
-  }
-
-  function closeExperience(index) {
-    const element = experienceElements[index];
-    const description = element.querySelector(".description");
-    
-    // Animación de salida
-    description.style.transition = "all 0.2s ease";
-    description.style.opacity = "0";
-    description.style.transform = "translateY(-10px)";
-    
-    setTimeout(() => {
-      description.classList.add("hidden");
-      element.classList.remove("bg-slate-900/30", "border-amber-500");
-      description.style.transform = "none";
-    }, 200);
-    
-    currentOpenExperience = null;
-    console.log(`Descripción cerrada para: ${EXPERIENCE_DATA[index].company}`);
-  }
-
-  // Cerrar al hacer click fuera
-  document.addEventListener("click", (e) => {
-    const clickedInsideExperience = e.target.closest(".experience");
-    
-    if (!clickedInsideExperience && currentOpenExperience !== null) {
-      closeExperience(currentOpenExperience);
-      console.log("Descripción cerrada por click externo");
-    }
-  });
-</script>
-
-<style>
-  .experience {
-    transition: all 0.3s ease;
-  }
-  
-  .experience:hover {
-    transform: translateX(2px);
-    background-color: rgba(30, 41, 59, 0.1);
-    border-radius: 0 8px 8px 0;
-  }
-  
-  .description {
-    animation: slideDown 0.3s ease-out forwards;
-  }
-  
-  @keyframes slideDown {
-    from {
-      max-height: 0;
-      opacity: 0;
-    }
-    to {
-      max-height: 200px;
-      opacity: 1;
-    }
-  }
-  
-  .close-btn:hover {
-    transform: scale(1.1);
-  }
-</style>

@@ -3,12 +3,17 @@ const navItems = [
   {
     title: "Proyectos",
     label: "proyectos",
-    url: "/#proyectos",
+    url: "/#projects",
   },
   {
-    title: "Sobre mi",
-    label: "sobre-mi",
-    url: "/#sobre-mi",
+    title: "Experiencia",
+    label: "experiencia",
+    url: "/#experience",
+  },
+  {
+    title: "Educación",
+    label: "educacion",
+    url: "/#education",
   },
 ];
 ---
@@ -20,7 +25,7 @@ const navItems = [
     {
       navItems.map((link) => (
         <a
-          class="transition text-white hover:text-cyan-300"
+          class="transition text-white hover:text-blue-400"
           aria-label={link.label}
           href={link.url}
         >
@@ -89,9 +94,9 @@ const navItems = [
         0 10px 15px -3px rgba(0, 0, 0, 0.1),
         0 4px 6px -4px rgba(0, 0, 0, 0.1); /* shadow-lg */
       border-width: 1px; /* ring-1 */
-      border-color: rgba(145, 40, 243, 0.1); /* ring-white/10 */
-      backdrop-filter: blur(8px); /* backdrop-blur */
-      background-color: rgba(145, 40, 243, 0.2); /* bg-slate-600/50 */
+      border-color: rgba(160, 59, 255, 0.1); /* ring-white/10 */
+      backdrop-filter: blur(12px); /* backdrop-blur */
+      background-color: rgba(116, 126, 255, 0.2); /* bg-slate-600/50 */
       /* @apply shadow-lg ring-1 backdrop-blur  bg-slate-600/50 ring-white/10; */
     }
   }

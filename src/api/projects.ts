@@ -14,8 +14,18 @@ const notion = new Client({
 
 const cache = new NodeCache({ stdTTL: 60 * 60 });
 
-export const getProjects = async () => {
-  const cacheData = cache.get("projects");
+type Project = {
+  description: string;
+  languages: { name: string; color: string }[];
+  name: string;
+  image: string;
+  github: string;
+  preview: string;
+};
+
+export const getProjects = async (): Promise<Project[]> => {
+  console.log("asdas");
+  const cacheData = cache.get("projects") as Project[];
   if (cacheData) {
     return cacheData;
   }

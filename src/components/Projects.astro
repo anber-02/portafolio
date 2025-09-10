@@ -1,30 +1,74 @@
 ---
-import { getProjects } from "../api/projects";
-import Project from "./Project.astro";
+import Github from "@/icons/Github.astro";
+import Chips from "./Chips.astro";
 
-const projects = await getProjects();
+const { projects } = Astro.props;
 ---
 
-<div
-  class="grid grid-cols-1 md:grid-cols-6 md:grid-rows-6 h-full w-full md:gap-4 space-y-4"
->
-  <!-- PROYECTOS -->
-  <div
-    class="flex flex-col justify-center items-center bg-blue-950 text-yellow-400 tracking-widest text-3xl font-extrabold md:rotate-180 md:[writing-mode:vertical-rl] rounded-md md:col-start-1 md:row-span-6 md:row-start-1"
-  >
-    PROYECTOS
-  </div>
+<section>
+  {
+    projects.length > 0 ? (
+      <div class="project w-full gap-4 flex-wrap ">
+        {projects.map((project) => (
+          <div class="rounded-xl overflow-hidden shadow-md group relative ">
+            {/* Imagen */}
+            <figure class="relative overflow-hidden rounded-xl aspect-video">
+              <img
+                src={project.image}
+                alt={`Imagen del proyecto ${project.name}`}
+                width={640}
+                height={360}
+                loading="lazy"
+                class="object-cover w-full h-full transition-transform duration-300 "
+              />
+            </figure>
+            {/* Overlay en hover */}
+            <figcaption class="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col gap-4 px-4 py-2 text-white">
+              {/* Título y botones */}
+              <div class="flex justify-between w-full items-center">
+                <h3 class="text-base font-bold">{project.name}</h3>
+                <div class="flex ">
+                  {project.github && (
+                    <Github
+                      class="w-6 h-6 mx-1 hover:text-gray-300"
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    />
+                  )}
+                </div>
+              </div>
 
-  <!-- Projects Component -->
-  <div class="col-span-5 row-span-6 h-full">
-    <div class="columns-1 md:columns-2 gap-4 space-y-4">
-      {
-        projects?.map((project) => {
-          return <Project key={project.id} project={project} />;
-        })
-      }
-    </div>
-  </div>
-</div>
+              <p class="text-sm line-clamp-3">{project.description}</p>
+              <Chips languages={project.languages} />
+            </figcaption>
+          </div>
+        ))}
+      </div>
+    ) : (
+      <p class="text-gray-600 dark:text-gray-300">
+        No hay proyectos disponibles en este momento.
+      </p>
+    )
+  }
+</section>
 
-<style></style>
+<style>
+  .project {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  .project div {
+    object-fit: cover;
+    opacity: 0.8;
+    transition: 0.5s ease;
+  }
+
+  .project div:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    opacity: 1;
+    filter: contrast(120%);
+  }
+</style>
