@@ -41,13 +41,12 @@ Desarrollé una plataforma interna de gestión de capacitaciones con **Laravel, 
             </span>
           </div>
 
-          <div class="col-span-8 md:col-span-5 max-w-none text-slate-300 leading-relaxed">
+          <div class="col-span-8 md:col-span-5 text-slate-300">
             <div
               set:html={exp.description.replace(
                 /\*\*(.*?)\*\*/g,
-                '<strong class="text-blue-300">$1</strong>'
+                '<strong class="text-blue-300">$1</strong>',
               )}
-              class="whitespace-pre-line [&>ul]:list-none [&>ul]:pl-0 [&>ul>li]:flex [&>ul>li]:items-start [&>ul>li]:gap-2 [&>ul>li]:mb-2 [&>ul>li]:before:content-[''] [&>ul>li]:before:w-1.5 [&>ul>li]:before:rounded-full [&>ul>li]:before:bg-blue-400"
             />
           </div>
         </div>
