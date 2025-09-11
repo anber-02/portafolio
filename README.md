@@ -18,10 +18,9 @@ Este portafolio fue creado utilizando **Astro**, una herramienta moderna y liger
 1. Clona este repositorio a tu máquina local:
    ```bash
    git clone https://github.com/anber-02/portafolio.git
-````
+   ```
 
 2. Navega a la carpeta del proyecto:
-
    ```bash
    cd portafolio
    ```
