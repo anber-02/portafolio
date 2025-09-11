@@ -1,7 +1,4 @@
-¡Ah, ya entiendo! Te lo dejaré en formato de texto plano con el formato de markdown para que puedas copiarlo fácilmente:
 
-````
-/*
 # AnberDev - Portafolio
 
 Bienvenido a **AnberDev**, mi portafolio personal donde comparto mis proyectos, habilidades y experiencia como desarrollador web.
@@ -71,4 +68,3 @@ Si deseas ponerte en contacto conmigo, puedes encontrarme en:
 ---
 
 ¡Gracias por visitar mi portafolio! Si tienes alguna pregunta o sugerencia, no dudes en contactarme.
-\*/
