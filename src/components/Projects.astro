@@ -1,6 +1,7 @@
 ---
 import Github from "@/icons/Github.astro";
 import Chips from "./Chips.astro";
+import PreviewIcon from "@/icons/PreviewIcon.astro";
 
 const { projects } = Astro.props;
 ---
@@ -27,14 +28,24 @@ const { projects } = Astro.props;
               {/* Título y botones */}
               <div class="flex justify-between w-full items-center">
                 <h3 class="text-base font-bold">{project.name}</h3>
-                <div class="flex ">
+                <div class="flex gap-4">
                   {project.github && (
-                    <Github
-                      class="w-6 h-6 mx-1 hover:text-gray-300"
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    />
+                    <a target="_blank" href={project.github}>
+                      <Github
+                        class="w-6 h-6 mx-1 hover:text-gray-300"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      />
+                    </a>
+                  )}
+                  {project.preview && (
+                    <a target="_blank" href={project.preview}>
+                      <PreviewIcon
+                        class="w-6 h-6 mx-1 hover:text-gray-300"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      />
+                    </a>
                   )}
                 </div>
               </div>
