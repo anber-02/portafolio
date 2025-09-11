@@ -24,12 +24,10 @@ type Project = {
 };
 
 export const getProjects = async (): Promise<Project[]> => {
-  console.log("asdas");
   const cacheData = cache.get("projects") as Project[];
   if (cacheData) {
     return cacheData;
   }
-  console.log("llamadas a la api");
 
   const query: QueryDatabaseParameters = {
     database_id: DATABASE_ID,
