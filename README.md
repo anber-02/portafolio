@@ -1,54 +1,74 @@
-# Astro Starter Kit: Basics
+¡Ah, ya entiendo! Te lo dejaré en formato de texto plano con el formato de markdown para que puedas copiarlo fácilmente:
+
+````
+/*
+# AnberDev - Portafolio
+
+Bienvenido a **AnberDev**, mi portafolio personal donde comparto mis proyectos, habilidades y experiencia como desarrollador web.
+
+Este portafolio fue creado utilizando **Astro**, una herramienta moderna y ligera para construir sitios web rápidos, basados en componentes, y optimizados para SEO. En este repositorio encontrarás el código fuente de mi portafolio, que incluye ejemplos de mis trabajos más destacados.
+
+---
+
+## 🛠 Tecnologías utilizadas
+
+- **Astro**: Un framework ligero para construir sitios web con un enfoque en la velocidad y la experiencia del desarrollador.
+
+---
+
+## 🚀 Instalación
+
+1. Clona este repositorio a tu máquina local:
+   ```bash
+   git clone https://github.com/anber-02/portafolio.git
+````
+
+2. Navega a la carpeta del proyecto:
+
+   ```bash
+   cd portafolio
+   ```
+
+3. Instala las dependencias:
+
+   ```bash
+   npm install
+   ```
+
+4. Corre el servidor de desarrollo:
+
+   ```bash
+   npm run dev
+   ```
+
+
+---
+
+## 📂 Estructura del proyecto
 
 ```
-npm create astro@latest -- --template basics
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-│   └── favicon.svg
+anberdev/
 ├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── api/             # Endpoint para obtener los proyectos
+│   ├── components/      # Componentes reutilizables de la UI
+│   ├── pages/           # Páginas de contenido (inicio, proyectos, etc.)
+│   ├── styles/          # Estilos globales y personalizados
+│   └── assets/          # Imágenes, íconos, y otros recursos
+├── public/              # Archivos estáticos (favicon, etc.)
+├── package.json         # Configuración y dependencias del proyecto
+└── astro.config.mjs     # Configuración de Astro
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+---
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## 📫 Contacto
 
-Any static assets, like images, can be placed in the `public/` directory.
+Si deseas ponerte en contacto conmigo, puedes encontrarme en:
 
-## 🧞 Commands
+* [Mi LinkedIn](https://www.linkedin.com/in/luisanberto/)
+* [Correo electrónico](mailto:anbertodev@gmail.com)
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+¡Gracias por visitar mi portafolio! Si tienes alguna pregunta o sugerencia, no dudes en contactarme.
+\*/
