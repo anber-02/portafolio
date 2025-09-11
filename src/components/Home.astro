@@ -11,7 +11,7 @@ import { Image } from "astro:assets";
 <div
   class="w-full sm:min-h-screen flex justify-start md:items-center flex-col md:flex-row gap-8 md:justify-between"
 >
-  <div class="flex flex-col md:w-3/4 overflow-hidden space-y-6">
+  <div class="flex flex-col md:w-3/4 space-y-8">
     <h1 class="text-4xl sm:text-5xl font-extrabold">Hola, soy Anber</h1>
     <p class="text-lg text-gray-100">
       <span class="text-blue-300 font-semibold">
@@ -22,6 +22,18 @@ import { Image } from "astro:assets";
       > y <span class="text-white font-medium">JavaScript</span>, especializado
       en desarrollo web fullstack y bases de datos.
     </p>
+
+    <div class="flex gap-4 flex-wrap mt-8">
+      <SocialIcon href="https://github.com/anber-02">
+        <Github class="h-6 w-6" />
+      </SocialIcon>
+      <SocialIcon href="https://www.linkedin.com/in/luisanberto/">
+        <LinkedIn class="h-6 w-6" />
+      </SocialIcon>
+      <SocialIcon href="mailto:anbertodev@gmail.com">
+        <Contact class="h-6 w-6" />
+      </SocialIcon>
+    </div>
   </div>
   <figure
     class="w-48 h-48 sm:w-64 sm:h-64 rounded-full overflow-hidden border-4 border-blue-300 self-center"
